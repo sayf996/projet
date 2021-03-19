@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gestion De Frigo</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <h1>Management Of Fridge</h1>
+    <div class="container">
+      <div id="table-div">
+        <h2>List Of Products</h2>
+        <table id="table" class="product-list"></table>
+        <table>
+          <tr>
+            <td class="b"></td>
+            <td class="d">
+              <input
+                type="text"
+                id="product"
+                placeholder="Insert product name"
+                class="b"
+              />
+            </td>
+            <td class="c">
+              <input
+                type="number"
+                id="quantity"
+                placeholder="Insert Quantity"
+                class="c"
+              />
+            </td>
+            <td class="e">
+              <button class="button button3" onclick="add()">Add</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="div2">
+      <h2>Search by Keyword</h2>
+      <input type="text" id="search-value" placeholder="Insert keyword here" />
+      <button class="button button4" onclick="searchKeyword()">Search</button>
+      <div class="div5"><table class="search-res"></table></div>
+    </div>
+    <div class="div3">
+      <h2>Check product by ID</h2>
+      <input type="number" id="check-value" placeholder="Insert ID Here" />
+      <button class="button button4" onclick="checkID()">Check</button>
+      <br />
+      <br />
+      <td>Status:</td>
+      <div class="div4" id="statusIndi"></div>
+      <div class="div5"><table id="check-res"></table></div>
+    </div>
+  </body>
+
+  <script src="main.js"></script>
+</html>

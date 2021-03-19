@@ -1,0 +1,106 @@
+body {
+    background-color: rgb(245, 243, 227);
+  }
+  h1 {
+    text-align: center;
+  }
+  .container {
+    float: left;
+    width: 500px;
+    height: 500px;
+  }
+  .div2 {
+    float: right;
+    width: 327px;
+    height: 210px;
+  }
+  .div3 {
+    
+    float: right;
+    width: 317px;
+    height: 210px;
+  }
+  .div4 {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    left: 50px;
+    bottom: 14px;
+    background-color: rgb(150, 150, 150);
+  }
+  .div5 {
+    position: relative;
+    overflow:scroll;
+    width: 322px;
+    height: 112px;
+    top: 10px;
+  
+   
+  }
+  
+  button {
+    background-color: rgb(79, 117, 42);
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .button1:hover {
+    background-color: #5898ad;
+  }
+  .button2:hover {
+    background-color: #a72f27;
+  }
+  .button3:hover {
+    background-color: #0b0985;
+  }
+  .button1 {
+    background-color: #77d4f3;
+  }
+  .button2 {
+    background-color: #f44336;
+  }
+  .button3 {
+    background-color: #100cdd;
+  }
+  .button4:hover {
+    background-color: rgb(67, 97, 35);
+  }
+  table.product-list {
+    width: 110%;
+  }
+  table,
+  th,
+  td {
+    border: solid 1px #ddd;
+    border-collapse: collapse;
+    padding: 2px 3px;
+    text-align: center;
+  }
+  table.b {
+    table-layout: inherit;
+    width: 110%;
+  }
+  input.b{
+  width: 120px;
+  }
+  td.b{
+    width: 54px;
+  }
+  input.c{
+    width: 90px;
+  }
+  td.d{
+    width: 158px;
+  }
+  td.c{
+    width: 101px;
+  }
+  td.e{
+    width: 104px;
+  }
+  
+  .button7{
+    background-color: black;
+  }
