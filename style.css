@@ -6,8 +6,8 @@ body {
   }
   .container {
     float: left;
-    width: 500px;
-    height: 500px;
+    width: 523px;
+  
   }
   .div2 {
     float: right;
@@ -15,8 +15,8 @@ body {
     height: 210px;
   }
   .div3 {
-    
     float: right;
+    position: relative;
     width: 317px;
     height: 210px;
   }
@@ -68,7 +68,7 @@ body {
     background-color: rgb(67, 97, 35);
   }
   table.product-list {
-    width: 110%;
+    width: 100%;
   }
   table,
   th,
@@ -104,3 +104,4 @@ body {
   .button7{
     background-color: black;
   }
+  

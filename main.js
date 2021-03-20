@@ -22,7 +22,7 @@ function renderProducts(products) {
       <td class="product-nom${product.id}">${product.nom}</td>
       <td class="product-qte${product.id}">${product.qte}</td>
       <td class="update-btn${product.id}">
-        <button class="button button1" id="${product.id}" onclick ="updateItem(this.id)">Update</button>
+        <button class="button button1" id="${product.id}" onclick ="updateItem(this.id)">Modify</button>
       </td>
       <td>
         <button class="button button2" id= "${product.id}" onclick="deleteItem(this.id)">Delete</button>
@@ -66,7 +66,6 @@ function deleteItem(id) {
   })
     .then((res) => res.json())
     .then(() => location.reload());
-    
 }
 
 let jsonResult = "";
@@ -74,16 +73,9 @@ let jsonResult = "";
 fetch(url)
   .then((res) => res.json())
   .then((data) => (jsonResult = data));
+
 let searchResult = "";
 const resultDiv = document.querySelector(".search-res");
-
-
-// NOT FINISHED
-function deleteProductIfNull(id){
- }
-
-
-
 
 function renderResult(product) {
   searchResult += `<tr id="${product.id}">
@@ -91,7 +83,7 @@ function renderResult(product) {
   <td class="product-nom${product.id}">${product.nom}</td>
   <td class="product-qte${product.id}">${product.qte}</td>
   <td class="update-btn${product.id}">
-    <button class="button button1" id="${product.id}" onclick ="updateItem(this.id)">Update</button>
+    <button class="button button1" id="${product.id}" onclick ="updateItem(this.id)">Modify</button>
   </td>
   <td>
     <button class="button button2" id= "${product.id}" onclick="deleteItem(this.id)">Delete</button>
@@ -100,6 +92,7 @@ function renderResult(product) {
 
   resultDiv.innerHTML = headers + searchResult;
 }
+
 function searchKeyword() {
   let resultExists = false;
   searchResult = "";
@@ -129,6 +122,7 @@ function checkID() {
   let checkValue = document.getElementById("check-value").value;
   let statusIndi = document.getElementById("statusIndi");
   let checkExists = false;
+
   for (let i = 0; i < jsonResult.length; i++) {
     if (jsonResult[i].id == checkValue) {
       renderCheck(jsonResult[i]);
@@ -145,6 +139,7 @@ function checkID() {
     checkTable.innerHTML = `<td>Please enter a value</td>`;
   }
 }
+
 let inputValueNom = "";
 let inputValueQte = "";
 function updateItem(id) {
@@ -170,30 +165,37 @@ function updateItem(id) {
     }
   });
 }
-
-console.log(jsonResult)
-
+// Method: "PUT" Doesnt Work
 function saveBtn(id) {
-  let updatedInputNom = document.querySelector(".nom" + id);
-  let updatedInputQte = document.querySelector(".qte" + id);
- for (let i=0;i> jsonResult.length; i++){
-    if(updatedInputQte ==0){
-      deleteItem(jsonResult[i].id);
-    }}
-  
-  /*fetch(url, {
+  const updatedInputNom = document.querySelector(".nom" + id).value;
+  const updatedInputQte = document.querySelector(".qte" + id).value;
+
+  fetch(url, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      nom: updatedInputNom.value,
-      qte: updatedInputQte.value,
+      nom: updatedInputNom,
+      qte: updatedInputQte,
     }),
-  }).then((res) => res.json());*/
+  }).then((res) => res.json());
+
   location.reload();
 }
 
 function cancelBtn() {
   location.reload();
 }
+
+function deleteIteamIfNull(JsonArray) {
+  for (let i = 0; i < JsonArray.length; i++) {
+    if (JsonArray[i].qte <= 0) {
+      deleteItem(JsonArray[i].id);
+      break;
+    }
+  }
+}
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => deleteIteamIfNull(data));
