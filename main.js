@@ -66,6 +66,7 @@ function deleteItem(id) {
   })
     .then((res) => res.json())
     .then(() => location.reload());
+    
 }
 
 let jsonResult = "";
@@ -75,6 +76,14 @@ fetch(url)
   .then((data) => (jsonResult = data));
 let searchResult = "";
 const resultDiv = document.querySelector(".search-res");
+
+
+// NOT FINISHED
+function deleteProductIfNull(id){
+ }
+
+
+
 
 function renderResult(product) {
   searchResult += `<tr id="${product.id}">
@@ -162,11 +171,17 @@ function updateItem(id) {
   });
 }
 
+console.log(jsonResult)
+
 function saveBtn(id) {
   let updatedInputNom = document.querySelector(".nom" + id);
   let updatedInputQte = document.querySelector(".qte" + id);
-
-  fetch(url, {
+ for (let i=0;i> jsonResult.length; i++){
+    if(updatedInputQte ==0){
+      deleteItem(jsonResult[i].id);
+    }}
+  
+  /*fetch(url, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -175,7 +190,8 @@ function saveBtn(id) {
       nom: updatedInputNom.value,
       qte: updatedInputQte.value,
     }),
-  }).then((res) => res.json());
+  }).then((res) => res.json());*/
+  location.reload();
 }
 
 function cancelBtn() {
