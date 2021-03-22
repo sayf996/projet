@@ -6,7 +6,7 @@ body {
   }
   .container {
     float: left;
-    width: 523px;
+    width: 577px;
   
   }
   .div2 {
@@ -64,6 +64,12 @@ body {
   .button3 {
     background-color: #100cdd;
   }
+  .button9{
+    background-color:lightgreen;
+  }
+  .button8{
+    background-color: lightcoral;
+  }
   .button4:hover {
     background-color: rgb(67, 97, 35);
   }
@@ -104,4 +110,6 @@ body {
   .button7{
     background-color: black;
   }
-  
+  input{
+    width: 120px;
+  }

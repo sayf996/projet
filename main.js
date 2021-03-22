@@ -203,7 +203,11 @@ function updateItem(id) {
 
     //Create Cancel Button and Save Button
 
-  let createBtns = `<button class= "button button7" onclick="cancelBtn()">✖</button> <button class="button button3" id="${id}"onclick="saveBtn(this.id)">Save</button>`;
+  let createBtns = 
+  `<button class= "button button7" onclick="cancelBtn()">✖</button> 
+  <button class= "button button8" id="${id}" onclick="decreaseOne(this.id)">-1</button>
+  <button class= "button button9" id="${id}" onclick="increaseOne(this.id)" >+1</button>
+  <button class="button button3" id="${id}"onclick="saveBtn(this.id)">Save</button>`;
   let updateBtnTD = document.querySelector(".update-btn" + id);
   pNom.innerHTML = inputValueNom;
   pQte.innerHTML = inputValueQte;
@@ -219,10 +223,11 @@ function updateItem(id) {
   });
 }
 
+
 // Method: "PUT" used for Save Button 
 function saveBtn(id) {
-  const updatedInputNom = document.querySelector(".nom" + id).value;
-  const updatedInputQte = document.querySelector(".qte" + id).value;
+  let updatedInputNom = document.querySelector(".nom" + id).value;
+  let updatedInputQte = document.querySelector(".qte" + id).value;
 
   fetch(url, {
     method: "PUT",
@@ -230,12 +235,16 @@ function saveBtn(id) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      id: id,
       nom: updatedInputNom,
       qte: updatedInputQte,
     }),
-  }).then((res) => res.json());
+  })
+  .then((res) => res.json())
+   .then(() => location.reload())
+  
 
-  location.reload();
+   
 }
 
 // CancelBtn() used for Cancel button
@@ -253,6 +262,27 @@ function deleteIteamIfNull(JsonArray) {
     }
   }
 }
+
 fetch(url)
   .then((res) => res.json())
   .then((data) => deleteIteamIfNull(data));
+
+  // function increase quantity value by 1
+
+  function increaseOne(id){
+    
+    let targetedInput = document.querySelector(".qte" + id);
+    let int = parseInt(targetedInput.value) +1 
+    targetedInput.setAttribute("value", int)
+
+  }
+
+  // function decrease quantity value by 1
+
+  function decreaseOne(id){
+    
+    let targetedInput = document.querySelector(".qte" + id);
+    let int = parseInt(targetedInput.value) -1 
+    targetedInput.setAttribute("value", int)
+
+  }
