@@ -1,8 +1,18 @@
 body {
-    background-color: rgb(245, 243, 227);
+  color:peachpuff;
+    background-image: url(img.jpg);
+     background-size:cover; 
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-size: 1400px;
+    
+    
   }
   h1 {
+    font-family: cursive;
     text-align: center;
+  }
+  h2{
+    font-family: cursive;
   }
   .container {
     float: left;
@@ -53,7 +63,7 @@ body {
     background-color: #a72f27;
   }
   .button3:hover {
-    background-color: #0b0985;
+    background-color: #1f1c99;
   }
   .button1 {
     background-color: #77d4f3;
@@ -70,16 +80,14 @@ body {
   .button8{
     background-color: lightcoral;
   }
-  .button4:hover {
-    background-color: rgb(67, 97, 35);
-  }
+ 
   table.product-list {
     width: 100%;
   }
   table,
   th,
   td {
-    border: solid 1px #ddd;
+    border: solid 1px rgb(250, 250, 250);
     border-collapse: collapse;
     padding: 2px 3px;
     text-align: center;

@@ -46,8 +46,8 @@ function renderProducts(products) {
 // Method: GET
 fetch(url)
   .then((res) => res.json())
-  .then((data) => renderProducts(data));
-
+  .then((data) => renderProducts(data))
+  .catch((error) => console.log(error))
 
 
   //Function add to add a new product used for add button
@@ -69,6 +69,7 @@ function add() {
       dataArr.push(data);
       renderProducts(dataArr);
     })
+    .catch((error) => console.log(error))
     .then(() => location.reload());
 }
 
@@ -80,7 +81,8 @@ function deleteItem(id) {
     method: "DELETE",
   })
     .then((res) => res.json())
-    .then(() => location.reload());
+    .then(() => location.reload())
+    .catch( (error) => console.log(error))
 }
 
 
@@ -91,7 +93,8 @@ let jsonResult = "";
 
 fetch(url)
   .then((res) => res.json())
-  .then((data) => (jsonResult = data));
+  .then((data) => (jsonResult = data))
+  .catch( (error) => console.log(error))
 
 
 
@@ -241,7 +244,9 @@ function saveBtn(id) {
     }),
   })
   .then((res) => res.json())
+  
    .then(() => location.reload())
+   
   
 
    
@@ -265,7 +270,8 @@ function deleteIteamIfNull(JsonArray) {
 
 fetch(url)
   .then((res) => res.json())
-  .then((data) => deleteIteamIfNull(data));
+  .then((data) => deleteIteamIfNull(data))
+  .catch((error) => console.log(error))
 
   // function increase quantity value by 1
 
