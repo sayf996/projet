@@ -75,7 +75,7 @@ function add() {
 }
 // if input value entered is incorrect
 function alertWhenNoInput(){
-  if(!productNom.value || !productQte.value || Math.sign(productQte.value) == -1)
+  if(!productNom.value || !productQte.value || productQte.value <= 0)
   alert("Please enter a Product Name and a Positive Quantity");
 }
 
