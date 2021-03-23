@@ -298,3 +298,4 @@ fetch(url)
     targetedInput.setAttribute("value", int);
 
   }
+  
