@@ -47,7 +47,7 @@ function renderProducts(products) {
 fetch(url)
   .then((res) => res.json())
   .then((data) => renderProducts(data))
-  .catch((error) => console.log(error))
+  .catch((error) => console.log(error));
 
 
   //Function add to add a new product used for add button
@@ -70,9 +70,14 @@ function add() {
       renderProducts(dataArr);
     })
     .catch((error) => console.log(error))
-    .then(() => location.reload());
+    .then(() => alertWhenNoInput())
+     .then(()=> deleteFromJsonIfNull());
 }
-
+// if input value entered is incorrect
+function alertWhenNoInput(){
+  if(!productNom.value || !productQte.value || Math.sign(productQte.value) == -1)
+  alert("Please enter a Product Name and a Positive Quantity");
+}
 
 // function deleteItem to delete product used for delete Button
 
@@ -82,7 +87,7 @@ function deleteItem(id) {
   })
     .then((res) => res.json())
     .then(() => location.reload())
-    .catch( (error) => console.log(error))
+    .catch( (error) => console.log(error));
 }
 
 
@@ -94,7 +99,7 @@ let jsonResult = "";
 fetch(url)
   .then((res) => res.json())
   .then((data) => (jsonResult = data))
-  .catch( (error) => console.log(error))
+  .catch( (error) => console.log(error));
 
 
 
@@ -207,7 +212,7 @@ function updateItem(id) {
     //Create Cancel Button and Save Button
 
   let createBtns = 
-  `<button class= "button button7" onclick="cancelBtn()">✖</button> 
+  `<button class= "button button7" onclick="cancelBtn()">X</button> 
   <button class= "button button8" id="${id}" onclick="decreaseOne(this.id)">-1</button>
   <button class= "button button9" id="${id}" onclick="increaseOne(this.id)" >+1</button>
   <button class="button button3" id="${id}"onclick="saveBtn(this.id)">Save</button>`;
@@ -244,8 +249,9 @@ function saveBtn(id) {
     }),
   })
   .then((res) => res.json())
+  .then(()=> deleteFromJsonIfNull());
   
-   .then(() => location.reload())
+  
    
   
 
@@ -267,19 +273,19 @@ function deleteIteamIfNull(JsonArray) {
     }
   }
 }
-
+function deleteFromJsonIfNull(){
 fetch(url)
   .then((res) => res.json())
   .then((data) => deleteIteamIfNull(data))
-  .catch((error) => console.log(error))
-
+  .then(()=> location.reload());
+}
   // function increase quantity value by 1
 
   function increaseOne(id){
     
     let targetedInput = document.querySelector(".qte" + id);
-    let int = parseInt(targetedInput.value) +1 
-    targetedInput.setAttribute("value", int)
+    let int = parseInt(targetedInput.value) +1 ;
+    targetedInput.setAttribute("value", int);
 
   }
 
@@ -288,7 +294,7 @@ fetch(url)
   function decreaseOne(id){
     
     let targetedInput = document.querySelector(".qte" + id);
-    let int = parseInt(targetedInput.value) -1 
-    targetedInput.setAttribute("value", int)
+    let int = parseInt(targetedInput.value) -1 ;
+    targetedInput.setAttribute("value", int);
 
   }
