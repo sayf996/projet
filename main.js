@@ -69,9 +69,8 @@ function add() {
       dataArr.push(data);
       renderProducts(dataArr);
     })
-    .catch((error) => console.log(error))
     .then(() => alertWhenNoInput())
-     .then(()=> deleteFromJsonIfNull());
+   .then(()=> deleteFromJsonIfNull());
 }
 // if input value entered is incorrect
 function alertWhenNoInput(){
@@ -101,7 +100,7 @@ fetch(url)
   .then((data) => (jsonResult = data))
   .catch( (error) => console.log(error));
 
-
+console.log(jsonResult)
 
   // function renderResult to render table with buttons in HTML for searcnKeyword function 
 
@@ -216,7 +215,7 @@ function updateItem(id) {
   <button class= "button button8" id="${id}" onclick="decreaseOne(this.id)">-1</button>
   <button class= "button button9" id="${id}" onclick="increaseOne(this.id)" >+1</button>
   <button class="button button3" id="${id}"onclick="saveBtn(this.id)">Save</button>`;
-  let updateBtnTD = document.querySelector(".update-btn" + id);
+  let modifyBtnTD = document.querySelector(".update-btn" + id);
   pNom.innerHTML = inputValueNom;
   pQte.innerHTML = inputValueQte;
 
@@ -226,7 +225,7 @@ function updateItem(id) {
   document.addEventListener("click", function (e) {
     if (e.target && e.target.id == id) {
       e.target.setAttribute("style", "display:none;");
-      updateBtnTD.innerHTML = createBtns;
+      modifyBtnTD.innerHTML = createBtns;
     }
   });
 }
